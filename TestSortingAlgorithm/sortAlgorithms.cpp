@@ -5,29 +5,21 @@ using namespace std;
 
 namespace vecsort {
 void selection_sort(vector<int>& v) {
-    // Quick trivial check
-    if (v.empty()) {
-        return;
-    }
-    size_t maxElemIndex;
-    size_t endIndex = v.size() - 1;
-    // We will repeat this process for the number of the element minus one
-    for (size_t j = 0; j < v.size() - 1; ++j) {
-        maxElemIndex = 0;
-        // Search for the maximum element in the remainder of the interval
-        for (size_t i = 1; i <= endIndex; ++i) {
-            if (v[i] > v[maxElemIndex]) {
-                maxElemIndex = i;
-            }
-        }
-        // If the maximum it's not at the end
-        if (maxElemIndex != endIndex) {
-            // swap the two elements
-            swap(v[maxElemIndex], v[endIndex]);
-        }
-        // Shrink the interval since you just put the maximum at the end
-        endIndex--;
-    }
+	// Transverse the whole range
+	for (size_t j = 0; j < v.size(); ++j) {
+		size_t minElemIndex = j; // Assume minimum is at the start
+		// Search for the actual minimum in the remainder of the interval
+		for (size_t i = j + 1; i < v.size(); ++i) {
+			if (v[i] < v[minElemIndex]) {
+				minElemIndex = i;
+			}
+		}
+		// If the minimum it's not at the start
+		if (minElemIndex != j) {
+			// swap the two elements
+			std::swap(v[minElemIndex], v[j]);
+		}
+	}
 }
 
 /*

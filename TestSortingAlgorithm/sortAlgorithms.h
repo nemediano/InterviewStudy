@@ -2,7 +2,7 @@
 
 // In case we need to debug the sorting algorithms
 template <typename Iterator>
-void print_array(const Iterator& begin, const Iterator& end) {
+void print_collection(const Iterator& begin, const Iterator& end) {
 	for (Iterator it = begin; it != end; ++it) {
 		std::cout << *it << " ";
 	}
