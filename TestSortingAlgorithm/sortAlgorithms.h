@@ -1,13 +1,6 @@
 #pragma once
 
-// In case we need to debug the sorting algorithms
-template <typename Iterator>
-void print_collection(const Iterator& begin, const Iterator& end) {
-	for (Iterator it = begin; it != end; ++it) {
-		std::cout << *it << " ";
-	}
-	std::cout << std::endl;
-}
+
 
 template<typename Iterator>
 Iterator partition(const Iterator left, const Iterator right) {
@@ -49,7 +42,7 @@ void quick_sort(const Iterator begin, const Iterator end) {
 }
 
 template <typename Iterator>
-void selection_sort(Iterator begin, Iterator end) {
+void selection_sort(const Iterator begin, const Iterator end) {
     // Transverse the whole range
     for (auto jt = begin; jt != end; ++jt) {
     	Iterator minElemIter = jt; // Assume minimum is at the start
@@ -98,7 +91,7 @@ void merge (const Iterator begin, const Iterator middle, const Iterator end) {
 }
 
 template <typename Iterator>
-void merge_sort(Iterator begin, Iterator end) {
+void merge_sort(const Iterator begin, const Iterator end) {
 	// If this array has more than one element (otherwise it's already sorted)
 	if (std::distance(begin, end) > 1) {
 		// Calculate the middle point of the array
@@ -159,7 +152,7 @@ void sift_down(const Iterator& currentRoot, const Iterator& begin, const Iterato
 			// you need to swap with the left child
 			toSwapIter = leftChildIter;
 		}
-		// Unless, there is a right child and it's also smaller
+		// Unless, there is a right child and you are also smaller
 		Iterator rightChilldIter = right_child(currentIter, begin, end);
 		if (rightChilldIter != end && *toSwapIter < *rightChilldIter) {
 			// then, you need to swap with the right child

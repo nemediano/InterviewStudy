@@ -182,7 +182,6 @@ void heapify (vector<int>& v) {
 }
 
 void heap_sort(std::vector<int>& v) {
-	using std::swap;
 	// Start by creating a valid in place heap of the array
 	heapify(v);
 	size_t lastElementIndex = v.size() - 1;

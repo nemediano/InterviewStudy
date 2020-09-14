@@ -17,16 +17,9 @@ int main(int argc, char* argv[]) {
     // Before we start we show the input
     cout << "Input:" << endl;
     print_vector(input);
-    // sort output using the tested method
-    //selection_sort(output);
-    //selection_sort_2(output.begin(), output.end());
-    //vecsort::quick_sort(output);
-    //quick_sort(output.begin(), output.end());
-    //vecsort::merge_sort(output);
-    //merge_sort(output.begin(), output.end());
-    //vecsort::heap_sort(output);
-    heap_sort(output.begin(), output.end());
 
+    // sort output using the tested method
+    heap_sort(output.begin(), output.end());
 
     // See the results
     if (output == expected_output) {
