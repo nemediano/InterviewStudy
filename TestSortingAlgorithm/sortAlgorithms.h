@@ -49,29 +49,21 @@ void quick_sort(const Iterator begin, const Iterator end) {
 }
 
 template <typename Iterator>
-void selection_sort(Iterator first, Iterator last) {
-    // Quick trivial check
-    if (first >= last) {
-        return;
-    }
-    Iterator maxElemPos;
-    Iterator endInterval = last;
-    // We will repeat this process for the number of the element minus one
-    for (auto jt = first; jt != (last - 1); ++jt) {
-        maxElemPos = first;
-        // Search for the maximum element in the remainder of the interval
-        for (auto it = (first + 1); it != endInterval; ++it) {
-            if (*it > *maxElemPos) {
-                maxElemPos = it;
+void selection_sort(Iterator begin, Iterator end) {
+    // Transverse the whole range
+    for (auto jt = begin; jt != end; ++jt) {
+    	Iterator minElemIter = jt; // Assume minimum is at the start
+        // Search for the actual minimum in the remainder of the interval
+        for (auto it = (jt + 1); it != end; ++it) {
+            if (*it < *minElemIter) {
+            	minElemIter = it;
             }
         }
-        // If the maximum it's not at the end
-        if (maxElemPos != (endInterval - 1)) {
+        // If the minimum it's not at the start
+        if (minElemIter != jt) {
             // swap the two elements
-            swap(*maxElemPos, *(endInterval - 1));
+            std::swap(*minElemIter, *jt);
         }
-        // Shrink the interval since you just put the maximum at the end
-        endInterval--;
     }
 }
 
